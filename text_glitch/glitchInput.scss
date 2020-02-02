@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css?family=Exo&display=swap');
+
+html, body, h1 {
+	padding: 0;
+	margin: 0;
+}
+
+#app {
+	background: white;
+	height: 100vh;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-size: cover;
+	background-position: center;
+	z-index: 1;
+}
+
+#wrapper {
+	 text-align: center;
+}
+
+@mixin glitchCopy { 
+		content: attr(data-txt);
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+}
+
+.glitch {
+    font-family: "Exo", sans-serif;
+	position: relative;
+	color: black;
+	font-size: 58px;
+	letter-spacing: 15px;
+	
+}
+
+
+
+@keyframes glitch-animate {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+			transform: skew((random(100) / 100) + deg);
+    }
+  }
+}
+
+//for ultra randomness.
+@keyframes glitch-animate2 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+			transform: skew((random(100) / 100) + deg);
+    }
+  }
+}
+
+@keyframes glitch-skew {
+  $steps: 10;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      transform: skew((random(8) - 5) + deg);
+    }
+  }
+}
+
+//Iteration count 5
+//Need to change iteration of others too
+@media (max-width:480px){
+	.glitch {
+		animation: glitch-skew 1s 5 linear alternate-reverse;
+		
+		
+		&::before{
+			@include glitchCopy;
+			left: 2px;
+			text-shadow: -2px 0 #d598b7;
+			clip: rect(44px, 450px, 56px, 0);
+			animation: glitch-animate 5s 5 linear alternate-reverse;
+		}
+		
+		&::after {
+			@include glitchCopy;
+			left: -2px;
+			text-shadow: -2px 0 #19c248, 2px 2px #ffe000;
+			animation: glitch-animate2 1s 5 steps(5, end) alternate-reverse;
+		}
+	}
+}
+
+@media (min-width:481px){
+	.glitch:hover {
+		animation: glitch-skew 1s 5 linear alternate-reverse;
+		
+		
+		&::before{
+			@include glitchCopy;
+			left: 2px;
+			text-shadow: -2px 0 #d598b7;
+			clip: rect(44px, 450px, 56px, 0);
+			animation: glitch-animate 5s 5 linear alternate-reverse;
+		}
+		
+		&::after {
+			@include glitchCopy;
+			left: -2px;
+			text-shadow: -2px 0 #19c248, 2px 2px #ffe000;
+			animation: glitch-animate2 1s 5 steps(5, end) alternate-reverse;
+		}
+	}
+}
