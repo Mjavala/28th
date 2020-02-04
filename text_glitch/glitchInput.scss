@@ -27,10 +27,32 @@ html, body, h1 {
 @mixin glitchCopy { 
 		content: attr(data-txt);
 		position: absolute;
-		top: 0;
-		left: 0;
+		// top: 0;
+		// left: 0;
 		width: 100%;
 		height: 100%;
+		left:-2px;
+		text-shadow:1px 0 yellow; 
+		top:0;
+		color:black;
+		background:white;
+		overflow:hidden;
+		clip:rect(0,900px,0,0); 
+}
+
+@mixin glitchCopy2 { 
+	content: attr(data-txt);
+	position: absolute;
+	// top: 0;
+	// left: 0;
+	width: 100%;
+	height: 100%;
+	left:2px;
+	top:0;
+	color:black;
+	background:white;
+	overflow:hidden;
+	clip:rect(0,900px,0,0); 
 }
 
 @mixin remove_glitchCopy {
@@ -47,7 +69,7 @@ html, body, h1 {
 	color: black;
 	font-size: 58px;
 	letter-spacing: 15px;
-	
+	margin: 0 auto;
 }
 
 @mixin fullScreen {
@@ -64,7 +86,7 @@ html, body, h1 {
 		}
 		
 		&::after {
-			@include glitchCopy;
+			@include glitchCopy2;
 			left: -2px;
 			text-shadow: -2px 0 #19c248, 2px 2px #ffe000;
 			animation: glitch-animate2 1s 5 steps(5, end) alternate-reverse;
@@ -76,12 +98,13 @@ html, body, h1 {
   $steps: 20;
   @for $i from 0 through $steps {
     #{percentage($i*(1/$steps))} {
-      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
-			transform: skew((random(100) / 100) + deg);
+	  clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+	  text-shadow: -2px 0 #d598b7;
+	  transform: skew((random(100) / 100) + deg);
 	}
 	100%{
 		transform: none;
-	  }
+	}
   }
 }
 
@@ -118,48 +141,45 @@ html, body, h1 {
 @media (max-width:480px){
 	.glitch{
 		//text-shadow: 0px 0px black;
-		animation: glitch-skew 1s 5 linear alternate-reverse;
+
+		animation: glitch-skew 2s 2 linear alternate-reverse;
 
 		&::before{
-			//problem 1:
-			//@include glitchCopy;
-			left: 2px;
-			text-shadow: -2px 0 #d598b7;
-			clip: rect(44px, 450px, 56px, 0);
-			//problem 2:
-			//animation: glitch-animate 5s 5 linear alternate-reverse;
-		}
-		//remove content: attr(data-txt) in glitchCopy
-		&::after {
 			@include glitchCopy;
-			//left: -2px;
+			left: 2px;
+			clip: rect(44px, 450px, 56px, 0);
+			animation: glitch-animate 3s 4 linear alternate-reverse;
+		}
+		&::after {
+			@include glitchCopy2;
 			left: 0;
-			//text-shadow: -2px 0 #19c248, 2px 2px #ffe000;
-			//text-shadow: 0px 0px black;
-			animation: glitch-animate 5s 5 linear alternate-reverse, glitch-animate2 1s 2 steps(5, end) alternate-reverse;
+			clip: auto;
+			animation: glitch-animate2 3s 2 steps(5, end) alternate-reverse;
 		}
 		
 	}
+}
 
 @media (min-width:481px){
 	.glitch:hover {
-		animation: glitch-skew 1s 5 linear alternate-reverse;
+		animation: glitch-skew 3s 3 linear alternate-reverse;
 		
 		
 		&::before{
 			@include glitchCopy;
 			left: 2px;
-			text-shadow: -2px 0 #d598b7;
+			//text-shadow: -2px 0 #d598b7;
 			clip: rect(44px, 450px, 56px, 0);
-			animation: glitch-animate 5s 5 linear alternate-reverse;
+			animation: glitch-animate 2s 4 linear alternate-reverse;
+			//@include remove_glitchCopy;
 		}
 		
 		&::after {
-			@include glitchCopy;
-			left: -2px;
-			text-shadow: -2px 0 #19c248, 2px 2px #ffe000;
-			animation: glitch-animate2 1s 5 steps(5, end) alternate-reverse;
+			@include glitchCopy2;
+			left: 0;
+			//text-shadow: -2px 0 #19c248, 2px 2px #ffe000;
+			clip: auto;
+			animation: glitch-animate2 3s 3 steps(5, end) alternate-reverse;
 		}
 	}
-}
 }
