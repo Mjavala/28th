@@ -8,7 +8,7 @@ html, body, h1 {
 #app {
 	background: white;
 	height: 100vh;
-	width: 100%;
+	width: 100vw;
 	margin: 0;
 	padding: 0;
 	display: flex;
@@ -29,8 +29,11 @@ html, body, h1 {
 		position: absolute;
 		// top: 0;
 		// left: 0;
-		width: 100%;
+		width: 100vw;
 		height: 100%;
+		
+		// min-width: 6000px;
+		// max-height: 3000px;
 		left:-2px;
 		text-shadow:1px 0 yellow; 
 		top:0;
@@ -45,7 +48,7 @@ html, body, h1 {
 	position: absolute;
 	// top: 0;
 	// left: 0;
-	width: 100%;
+	width: 100vw;
 	height: 100%;
 	left:2px;
 	top:0;
@@ -59,7 +62,7 @@ html, body, h1 {
 	position: absolute;
 		top: 0;
 		left: 0;
-		width: 100%;
+		width: 100vw;
 		height: 100%;
 }
 
@@ -94,7 +97,7 @@ html, body, h1 {
 	}
 }
 
-@keyframes glitch-animate {
+@-webkit-keyframes glitch-animate {
   $steps: 20;
   @for $i from 0 through $steps {
     #{percentage($i*(1/$steps))} {
@@ -108,9 +111,137 @@ html, body, h1 {
   }
 }
 
-//for ultra randomness.
-@keyframes glitch-animate2 {
+@-moz-keyframes glitch-animate {
+	$steps: 20;
+	@for $i from 0 through $steps {
+	  #{percentage($i*(1/$steps))} {
+		clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+		text-shadow: -2px 0 #d598b7;
+		transform: skew((random(100) / 100) + deg);
+	  }
+	  100%{
+		  transform: none;
+	  }
+	}
+}
+
+@-o-keyframes glitch-animate {
+	$steps: 20;
+	@for $i from 0 through $steps {
+	  #{percentage($i*(1/$steps))} {
+		clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+		text-shadow: -2px 0 #d598b7;
+		transform: skew((random(100) / 100) + deg);
+	  }
+	  100%{
+		  transform: none;
+	  }
+	}
+}
+
+@-ms-keyframes glitch-animate {
+	$steps: 20;
+	@for $i from 0 through $steps {
+	  #{percentage($i*(1/$steps))} {
+		clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+		text-shadow: -2px 0 #d598b7;
+		transform: skew((random(100) / 100) + deg);
+	  }
+	  100%{
+		  transform: none;
+	  }
+	}
+}
+
+@keyframes glitch-animate-website {
   $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+	  clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+	  text-shadow: -2px 0 #d598b7;
+	  transform: skew((random(100) / 100) + deg);
+	}
+	100%{
+		transform: none;
+	}
+  }
+}
+
+@keyframes glitch-animate-mobile {
+	$steps: 20;
+	@for $i from 0 through $steps {
+	  #{percentage($i*(1/$steps))} {
+		clip: rect(random(200)+px, 9999px, random(200)+px, 0);
+		text-shadow: -2px 0 #d598b7;
+		transform: skew((random(100) / 100) + deg);
+	  }
+	  100%{
+		  transform: none;
+	  }
+	}
+  }
+
+//for ultra randomness.
+@-webkit-keyframes glitch-animate2 {
+	$steps: 20;
+	@for $i from 0 through $steps {
+	  #{percentage($i*(1/$steps))} {
+		clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+		text-shadow: -2px 0 #19c248, 2px 2px #ffe000;
+			  transform: skew((random(100) / 100) + deg);
+	  }
+	  100%{
+		  transform: none;
+		}
+	}
+}
+
+@-moz-keyframes glitch-animate2 {
+	$steps: 20;
+	@for $i from 0 through $steps {
+	  #{percentage($i*(1/$steps))} {
+		clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+		text-shadow: -2px 0 #19c248, 2px 2px #ffe000;
+			  transform: skew((random(100) / 100) + deg);
+	  }
+	  100%{
+		  transform: none;
+		}
+	}
+}
+
+@-o-keyframes glitch-animate2 {
+	$steps: 20;
+	@for $i from 0 through $steps {
+	  #{percentage($i*(1/$steps))} {
+		clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+		text-shadow: -2px 0 #19c248, 2px 2px #ffe000;
+			  transform: skew((random(100) / 100) + deg);
+	  }
+	  100%{
+		  transform: none;
+		}
+	}
+}
+
+@-ms-keyframes glitch-animate2 {
+	$steps: 20;
+	@for $i from 0 through $steps {
+	  #{percentage($i*(1/$steps))} {
+		clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+		text-shadow: -2px 0 #19c248, 2px 2px #ffe000;
+			  transform: skew((random(100) / 100) + deg);
+	  }
+	  100%{
+		  transform: none;
+		}
+	}
+}
+
+//this one with clip, change for mobile one
+@keyframes glitch-animate2-website {
+  $steps: 20;
+  $mobile: 480px;
   @for $i from 0 through $steps {
     #{percentage($i*(1/$steps))} {
 	  clip: rect(random(100)+px, 9999px, random(100)+px, 0);
@@ -121,6 +252,69 @@ html, body, h1 {
 		transform: none;
 	  }
   }
+}
+
+@keyframes glitch-animate2-mobile {
+	$steps: 20;
+	$mobile: 480px;
+	@for $i from 0 through $steps {
+	  #{percentage($i*(1/$steps))} {
+		clip: rect(random(200)+px, 9999px, random(200)+px, 0);
+		text-shadow: -2px 0 #19c248, 2px 2px #ffe000;
+			  transform: skew((random(100) / 100) + deg);
+	  }
+	  100%{
+		  transform: none;
+		}
+	}
+  }
+
+@-webkit-keyframes glitch-skew {
+	$steps: 10;
+	@for $i from 0 through $steps {
+	  #{percentage($i*(1/$steps))} {
+		transform: skew((random(8) - 5) + deg);
+	  }
+	  100%{
+		  transform: none;
+	  }
+	}
+}
+
+@-moz-keyframes glitch-skew {
+	$steps: 10;
+	@for $i from 0 through $steps {
+	  #{percentage($i*(1/$steps))} {
+		transform: skew((random(8) - 5) + deg);
+	  }
+	  100%{
+		  transform: none;
+	  }
+	}
+}
+
+@-o-keyframes glitch-skew {
+	$steps: 10;
+	@for $i from 0 through $steps {
+	  #{percentage($i*(1/$steps))} {
+		transform: skew((random(8) - 5) + deg);
+	  }
+	  100%{
+		  transform: none;
+	  }
+	}
+}
+
+@-ms-keyframes glitch-skew {
+	$steps: 10;
+	@for $i from 0 through $steps {
+	  #{percentage($i*(1/$steps))} {
+		transform: skew((random(8) - 5) + deg);
+	  }
+	  100%{
+		  transform: none;
+	  }
+	}
 }
 
 @keyframes glitch-skew {
@@ -135,26 +329,28 @@ html, body, h1 {
   }
 }
 
-//Iteration count 5
-//Need to change iteration of others too
 //480
 @media (max-width:480px){
 	.glitch{
-		//text-shadow: 0px 0px black;
-
-		animation: glitch-skew 2s 2 linear alternate-reverse;
+		/* 
+			
+		Width can be changed due to # of text characters in glitch!
+			
+		*/
+		animation: glitch-skew 3s 2 linear alternate-reverse;
+		width: 59%;
 
 		&::before{
 			@include glitchCopy;
 			left: 2px;
 			clip: rect(44px, 450px, 56px, 0);
-			animation: glitch-animate 3s 4 linear alternate-reverse;
+			animation: glitch-animate-mobile 3s 4 linear alternate-reverse;
 		}
 		&::after {
 			@include glitchCopy2;
 			left: 0;
 			clip: auto;
-			animation: glitch-animate2 3s 2 steps(5, end) alternate-reverse;
+			animation: glitch-animate2-mobile 3s 2 steps(5, end) alternate-reverse;
 		}
 		
 	}
@@ -162,6 +358,7 @@ html, body, h1 {
 
 @media (min-width:481px){
 	.glitch:hover {
+		//-moz-animation: glitch-skew 3s 3 linear alternate-reverse;
 		animation: glitch-skew 3s 3 linear alternate-reverse;
 		
 		
@@ -170,7 +367,7 @@ html, body, h1 {
 			left: 2px;
 			//text-shadow: -2px 0 #d598b7;
 			clip: rect(44px, 450px, 56px, 0);
-			animation: glitch-animate 2s 4 linear alternate-reverse;
+			animation: glitch-animate-website 2s 4 linear alternate-reverse;
 			//@include remove_glitchCopy;
 		}
 		
@@ -179,7 +376,7 @@ html, body, h1 {
 			left: 0;
 			//text-shadow: -2px 0 #19c248, 2px 2px #ffe000;
 			clip: auto;
-			animation: glitch-animate2 3s 3 steps(5, end) alternate-reverse;
+			animation: glitch-animate2-website 3s 3 steps(5, end) alternate-reverse;
 		}
 	}
 }
